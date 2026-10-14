@@ -51,9 +51,18 @@ export default function Contact() {
               </svg>
             }
           />
+          <Card
+            no="05"
+            label="Phone · WhatsApp"
+            value={contact.phone}
+            href={contact.whatsapp.href}
+            external
+            plain
+            icon={<Icon name="whatsapp" className="size-[18px]" />}
+          />
           <div className="grid gap-4 sm:grid-cols-2">
-            <Card no="05" label="Social" value="GitHub" href={contact.github.href} external icon={<Icon name="github" className="size-[18px]" />} />
-            <Card no="06" label="Social" value="LinkedIn" href={contact.linkedin.href} external icon={<Icon name="linkedin" className="size-[18px]" />} />
+            <Card no="06" label="Social" value="GitHub" href={contact.github.href} external icon={<Icon name="github" className="size-[18px]" />} />
+            <Card no="07" label="Social" value="LinkedIn" href={contact.linkedin.href} external icon={<Icon name="linkedin" className="size-[18px]" />} />
           </div>
           <div className="frame flex-1">
             <div className="box h-full">

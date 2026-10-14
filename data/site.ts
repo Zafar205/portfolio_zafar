@@ -11,7 +11,7 @@ export type IconKey =
   | "react" | "nextdotjs" | "typescript" | "javascript" | "tailwindcss" | "html5" | "css"
   | "nodedotjs" | "python" | "postgresql" | "supabase" | "drizzle" | "frappe" | "erpnext" | "express"
   | "docker" | "redux" | "firebase" | "githubactions" | "vercel" | "linux" | "nginx" | "cloudflare"
-  | "git" | "github" | "figma" | "postman" | "notion" | "api" | "x" | "linkedin" | "agile";
+  | "git" | "github" | "figma" | "postman" | "notion" | "api" | "x" | "linkedin" | "agile" | "whatsapp";
 
 export interface Skill { name: string; icon: IconKey }
 export interface SkillGroup { id: SkillGroupId; label: string; items: Skill[] }
@@ -80,6 +80,7 @@ export const site = {
   contact: {
     email: "mohamedalzafar@gmail.com",
     phone: "+92 326 5908446",
+    whatsapp: { label: "+92 326 5908446", href: "https://wa.me/923265908446" },
     github: { label: "github.com/Zafar205", href: "https://github.com/Zafar205" },
     linkedin: { label: "linkedin.com/in/zafar2062005", href: "https://www.linkedin.com/in/zafar2062005" },
     x: { label: "@Zafar205", href: "https://x.com/Zafar205" },

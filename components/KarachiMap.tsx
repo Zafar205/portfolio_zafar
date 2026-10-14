@@ -82,7 +82,7 @@ export default function KarachiMap() {
       <p className="label absolute top-4 left-4 flex items-center gap-3 border border-line bg-bg px-3 py-2 text-[11px]">
         <span className="size-2 bg-text" aria-hidden="true" />
         <span>
-          <b>07</b> / {site.city}, {site.country}
+          <b>08</b> / {site.city}, {site.country}
         </span>
       </p>
       <p className="absolute right-3 bottom-3 rounded-full bg-white px-3 py-1 text-[11px] text-black">

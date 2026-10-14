@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { site } from "@/data/site";
+import { Icon } from "./icons";
 import HeroWire from "./HeroWire";
 import RigLoader from "./rig/RigLoader";
 import { SoundToggle } from "./sound";
@@ -41,6 +42,17 @@ export default function Hero() {
               {site.available}
             </p>
           </div>
+
+          <a
+            href={site.contact.whatsapp.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-line mt-4 inline-flex w-fit items-center gap-2.5 text-[13px] lg:flex tracking-[.14em] text-muted hover:text-text"
+          >
+            <Icon name="whatsapp" className="size-4" />
+            <span className="tnum">{site.contact.phone}</span>
+            <span className="sr-only">(WhatsApp, opens in a new tab)</span>
+          </a>
 
           <h1 id="hero-title" className="mt-7">
             <span className="label block text-[13px]">Hi there! I’m</span>

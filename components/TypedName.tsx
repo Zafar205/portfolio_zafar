@@ -52,7 +52,7 @@ export default function TypedName({ phrases, still }: { phrases: string[]; still
   }, [phrases]);
 
   return (
-    <span className="inline-flex max-w-full items-center whitespace-nowrap" style={{ minWidth: `min(${longest + 1}ch, 100%)` }} aria-hidden="true">
+    <span className="inline-flex max-w-full items-center justify-center whitespace-nowrap lg:justify-start" style={{ minWidth: `min(${longest + 1}ch, 100%)` }} aria-hidden="true">
       {text}
       <span className="block-cursor" />
     </span>
