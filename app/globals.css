@@ -1,0 +1,196 @@
+@layer theme, base, mz, components, utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── theme tokens ─────────────────────────────── */
+:root {
+  --bg: #e3e3ea;
+  --panel: #ebebf0;
+  --field: #d8d8e0;
+  --line: #c3c3cd;
+  --line-strong: #8f8f9b;
+  --text: #1c1c23;
+  --muted: #555561;
+  --btn-bg: #23232b;
+  --btn-text: #ececf1;
+  --tile: #ffffff;
+  --tile-ink: #1c1c23;
+  --live: #111116;
+  --danger: #a3221a;
+  --gutter: clamp(16px, 6vw, 120px);
+  --max: 1440px;
+  color-scheme: light;
+}
+.dark {
+  --bg: #0e0e13;
+  --panel: #121217;
+  --field: #1b1c21;
+  --line: #2a2a31;
+  --line-strong: #4a4a54;
+  --text: #dedee6;
+  --muted: #8d8d98;
+  --btn-bg: #dedee6;
+  --btn-text: #0e0e13;
+  --tile: #e4e4ea;
+  --tile-ink: #24242a;
+  --live: #ffffff;
+  --danger: #ff8f84;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-field: var(--field);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-mono);
+  --font-mono: var(--font-mono);
+  --font-title: var(--font-title);
+  --font-urdu: var(--font-urdu);
+  --font-serif: var(--font-serif);
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 24px; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (pointer: fine) { html { overscroll-behavior: none; } }
+a, button, [role="tab"] { touch-action: manipulation; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .3s, color .3s;
+}
+::selection { background: var(--text); color: var(--bg); }
+:focus-visible { outline: 1px solid var(--text); outline-offset: 3px; }
+
+@property --k { syntax: "<color>"; inherits: true; initial-value: #4a4a54; }
+
+/* Component classes live in a layer so Tailwind utilities (fixed, px-8, …) can override them. */
+@layer mz {
+.shell {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
+
+/* ── type ─────────────────────────────── */
+.label { font-size: 11px; line-height: 1.4; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.label b { color: var(--text); font-weight: 500; }
+.urdu { font-family: var(--font-urdu), serif; direction: rtl; unicode-bidi: isolate; font-weight: 700; }
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* ── corner-bracket frame: .frame wraps a bordered .box ─────────────────────────────── */
+.frame {
+  --k: var(--line-strong);
+  --s: 10px;
+  position: relative;
+  padding: 4px;
+  background:
+    linear-gradient(var(--k), var(--k)) 0 0 / var(--s) 1px,
+    linear-gradient(var(--k), var(--k)) 0 0 / 1px var(--s),
+    linear-gradient(var(--k), var(--k)) 100% 0 / var(--s) 1px,
+    linear-gradient(var(--k), var(--k)) 100% 0 / 1px var(--s),
+    linear-gradient(var(--k), var(--k)) 0 100% / var(--s) 1px,
+    linear-gradient(var(--k), var(--k)) 0 100% / 1px var(--s),
+    linear-gradient(var(--k), var(--k)) 100% 100% / var(--s) 1px,
+    linear-gradient(var(--k), var(--k)) 100% 100% / 1px var(--s);
+  background-repeat: no-repeat;
+}
+.frame > .box { border: 1px solid var(--line); background: var(--bg); height: 100%; }
+.frame-hover { transition: --k .2s; }
+.frame-hover:hover, .frame-hover:focus-within { --k: var(--text); }
+
+/* ── buttons ─────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 24px;
+  font-size: 13px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.btn-solid { background: var(--btn-bg); color: var(--btn-text); border: 1px solid var(--btn-bg); }
+.btn-solid:hover { background: transparent; color: var(--text); border-color: var(--text); }
+.btn-solid:disabled { opacity: .6; cursor: progress; }
+.btn-line { border: 1px solid var(--line); color: var(--text); background: var(--bg); }
+.btn-line:hover { border-color: var(--text); }
+.btn .arrow { transition: transform .25s cubic-bezier(.3, .7, 0, 1); }
+.btn:hover .arrow { transform: translateX(3px); }
+
+.link-line { position: relative; transition: color .2s; }
+.link-line::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.3, .7, 0, 1); }
+.link-line:hover::after, .link-line:focus-visible::after { transform: scaleX(1); }
+
+/* ── reveal on scroll ─────────────────────────────── */
+.js [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .7s cubic-bezier(.2, .7, 0, 1), transform .7s cubic-bezier(.2, .7, 0, 1); transition-delay: calc(var(--i, 0) * 70ms); }
+.js [data-reveal][data-shown] { opacity: 1; transform: none; }
+
+/* ── loading screen ─────────────────────────────── */
+.loader { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: var(--bg); transition: opacity .45s ease, visibility .45s; animation: loader-failsafe .4s 2.6s forwards; }
+.loader[data-done] { opacity: 0; visibility: hidden; pointer-events: none; }
+@keyframes loader-failsafe { to { opacity: 0; visibility: hidden; } }
+.loader-bar { position: relative; height: 1px; background: var(--line); overflow: hidden; }
+.loader-bar > i { position: absolute; inset: 0; background: var(--text); transform-origin: left; transform: scaleX(0); animation: loader-fill 1.3s cubic-bezier(.4, 0, .2, 1) forwards; }
+@keyframes loader-fill { to { transform: scaleX(1); } }
+
+/* ── hero bits ─────────────────────────────── */
+.live-dot { position: relative; width: 9px; height: 9px; border-radius: 50%; background: var(--text); box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--line-strong); }
+.live-dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--text); animation: pulse 2s ease-out infinite; }
+@keyframes pulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(2.8); opacity: 0; } }
+.block-cursor { display: inline-block; width: .6em; height: 1em; margin-left: .15em; background: var(--text); vertical-align: -.12em; animation: blink 1.05s steps(1, end) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.photo { filter: grayscale(1) contrast(1.05); }
+
+/* ── tabs ─────────────────────────────── */
+.vtab { display: flex; align-items: center; gap: 22px; width: 100%; min-height: 54px; padding: 0 28px; border: 1px solid var(--line); color: var(--text); font-size: 14px; letter-spacing: .14em; text-transform: uppercase; text-align: left; transition: background-color .2s, color .2s, border-color .2s; }
+.vtab span { color: var(--muted); }
+.vtab:hover { border-color: var(--line-strong); }
+.vtab[aria-selected="true"] { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
+.vtab[aria-selected="true"] span { color: color-mix(in srgb, var(--btn-text) 62%, transparent); }
+@media (max-width: 1023px) { .vtab { gap: 10px; padding: 0 14px; font-size: 12px; min-height: 48px; white-space: nowrap; } }
+
+/* ── form ─────────────────────────────── */
+.field { display: block; width: 100%; margin-top: 10px; padding: 12px 14px; background: var(--field); border: 1px solid var(--line); border-radius: 0; color: var(--text); font-size: 15px; transition: border-color .2s; }
+.field::placeholder { color: var(--muted); opacity: .8; }
+.field:hover { border-color: var(--line-strong); }
+.field:focus-visible { outline: none; border-color: var(--text); }
+.field[aria-invalid="true"] { border-color: var(--danger); }
+textarea.field { resize: vertical; min-height: 160px; }
+
+/* ── dock & corner controls ─────────────────────────────── */
+.dock-btn { display: grid; place-items: center; width: 48px; height: 48px; color: var(--muted); transition: background-color .2s, color .2s; }
+.dock-btn:hover { color: var(--text); }
+.dock-btn[aria-current="true"] { background: var(--btn-bg); color: var(--btn-text); }
+.sound-bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 10px; }
+.sound-bars i { width: 2px; height: 3px; background: currentColor; }
+[data-on] .sound-bars i { animation: bars .9s ease-in-out infinite alternate; }
+[data-on] .sound-bars i:nth-child(2) { animation-delay: -.3s; }
+[data-on] .sound-bars i:nth-child(3) { animation-delay: -.6s; }
+@keyframes bars { from { height: 3px; } to { height: 10px; } }
+
+/* ── project preview card (always a light "paper" card) ─────────────────────────────── */
+.preview { background: #ebebe9; color: #1a1a1e; }
+.preview-title { font-family: var(--font-serif), Georgia, serif; font-weight: 400; letter-spacing: -.01em; line-height: 1; }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .loader-bar > i { animation-duration: .01s; }
+  .live-dot::after, .block-cursor, [data-on] .sound-bars i { animation: none; }
+  .link-line::after, .btn .arrow { transition: none; }
+}
