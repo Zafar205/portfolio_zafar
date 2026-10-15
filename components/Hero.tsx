@@ -3,7 +3,6 @@ import { site } from "@/data/site";
 import { Icon } from "./icons";
 import HeroWire from "./HeroWire";
 import RigLoader from "./rig/RigLoader";
-import { SoundToggle } from "./sound";
 import TypedName from "./TypedName";
 
 /** Geometric "M" mark. */
@@ -89,9 +88,6 @@ export default function Hero() {
 
       <HeroWire />
 
-      <div className="absolute right-10 bottom-6 z-10 hidden lg:block">
-        <SoundToggle />
-      </div>
     </section>
   );
 }
