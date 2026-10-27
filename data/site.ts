@@ -141,7 +141,6 @@ export const skills: SkillGroup[] = [
       { name: "CI/CD pipelines", icon: "api" },
       { name: "Vercel", icon: "vercel" },
       { name: "Linux", icon: "linux" },
-      { name: "Docker", icon: "docker" }, // PLACEHOLDER: not on your resume; remove if unused
     ],
   },
   {
@@ -159,7 +158,7 @@ export const skills: SkillGroup[] = [
 
 export const experience: Role[] = [
   {
-    period: "2025 – Now",
+    period: "2025 – 2026",
     title: "Founder & Full Stack Engineer",
     org: "UnityAlgo",
     mark: "UA",
@@ -171,7 +170,7 @@ export const experience: Role[] = [
     stack: ["ERPNext", "Frappe", "Python", "Next.js"],
   },
   {
-    period: "2025 – Now",
+    period: "2025 – 2026",
     title: "Contract Full Stack Engineer",
     org: "MYDV-DMS · UK, remote",
     mark: "MV",
