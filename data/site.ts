@@ -169,13 +169,13 @@ export const experience: Role[] = [
     stack: ["Next.js", "TypeScript", "Drizzle", "PostgreSQL", "Supabase", "Vercel"],
   },
   {
-    period: "2025 – 2026",
+    period: "2026",
     title: "Full Stack Engineer",
     org: "UnityAlgo",
     mark: "UA",
-    impact: "Won 3+ paying clients and grew to $251 in monthly recurring revenue.",
+    impact: "Worked on the interest accrual engine for Care Financial Services Lending Management System.",
     points: [
-      "Worked on the interest accrual engine for Care Financial Services Lending Management System to support loan interest calculations and lending workflows",
+      "Supported loan interest calculations and lending workflows",
       "The system served approximately 11,000 customers with over PKR 750 million in disbursed loans",
       "Lead client acquisition, development, CI/CD deployment and post-launch support",
     ],
