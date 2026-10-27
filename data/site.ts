@@ -44,7 +44,6 @@ export interface Project {
   role: string;
   stack: string[];
   highlights: string[];
-  featured?: boolean;
   url?: string;
 }
 
@@ -53,15 +52,15 @@ export const site = {
   name: "Muhammad Zafar",
   firstName: "Muhammad",
   /** Phrases the hero types out in turn. */
-  typed: ["Muhammad Zafar,", "Software Engineer", "SaaS Founder"],
+  typed: ["Muhammad Zafar,", "Software Engineer", "Full Stack Engineer"],
   /** PLACEHOLDER: replace with your photo at public/operator.jpg and point this to it. */
   photo: "/head_shot.png",
   role: "Software Engineer",
   headlineRole: "Software Engineer",
-  roleLong: "Full Stack Engineer, SaaS founder",
+  roleLong: "Full Stack Engineer",
   focus: "Next.js, TypeScript & SaaS",
   description:
-    "Full-stack engineer and SaaS founder building polished web products with Next.js, TypeScript, APIs, and database architecture.",
+    "Full-stack engineer building polished web products with Next.js, TypeScript, APIs, and database architecture.",
   city: "Karachi", // PLACEHOLDER: assumed from Habib University
   country: "Pakistan",
   available: "Available for freelance work",
@@ -100,7 +99,7 @@ export const nav = [
 export const sections = {
   skills: { no: "01", label: "Stack", title: "Skills", urdu: "مہارت" },
   experience: { no: "01", label: "Timeline", title: "Experience", urdu: "تجربہ" },
-  work: { no: "02", label: "Selected work", title: "Projects", urdu: "منصوبے" },
+  work: { no: "02", label: "All work", title: "Projects", urdu: "منصوبے" },
   contact: { no: "00", label: "Send a message", title: "Contact", urdu: "رابطہ" },
 };
 
@@ -159,7 +158,7 @@ export const skills: SkillGroup[] = [
 export const experience: Role[] = [
   {
     period: "2025 – 2026",
-    title: "Founder & Full Stack Engineer",
+    title: "Full Stack Engineer",
     org: "UnityAlgo",
     mark: "UA",
     impact: "Won 3+ paying clients and grew to $251 in monthly recurring revenue.",
@@ -247,7 +246,20 @@ export const projects: Project[] = [
       "GitHub Actions CI/CD with Vercel deployment",
       "Helped grow monthly recurring revenue from £200 to £2,400",
     ],
-    featured: true,
+  },
+  {
+    slug: "orpheus-urdu-tts",
+    short: "Orpheus Urdu TTS",
+    mark: "OU",
+    title: "Orpheus Urdu TTS",
+    category: "Text-to-Speech Project",
+    tagline: ["Urdu", "Speech", "Orpheus"],
+    footnote: "Urdu text-to-speech",
+    summary: "An Urdu text-to-speech project using Orpheus.",
+    year: "2026",
+    role: "Engineer",
+    stack: ["Orpheus", "Urdu TTS"],
+    highlights: ["Urdu text-to-speech with Orpheus"],
   },
   {
     slug: "rlcc-marks",
@@ -267,7 +279,6 @@ export const projects: Project[] = [
       "Midterm and final marks entry with result generation",
       "Used by staff for about 750 female students",
     ],
-    featured: true,
   },
   {
     slug: "mydv-marketing",
@@ -297,7 +308,7 @@ export const projects: Project[] = [
     footnote: "ERPNext · Frappe",
     summary: "Loan origination, repayments and reporting for microfinance institutions.",
     year: "2025",
-    role: "Founder & engineer",
+    role: "Engineer",
     stack: ["ERPNext", "Frappe", "Python"],
     highlights: ["Loan lifecycle on ERPNext", "Repayment schedules and reporting", "Delivered to paying clients"],
   },
