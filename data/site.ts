@@ -9,7 +9,7 @@ export type SkillGroupId = "frontend" | "backend" | "devops" | "tools";
 /** Icon keys map to simple-icons glyphs in components/icons.tsx. */
 export type IconKey =
   | "react" | "nextdotjs" | "typescript" | "javascript" | "tailwindcss" | "html5" | "css"
-  | "nodedotjs" | "python" | "postgresql" | "supabase" | "drizzle" | "frappe" | "erpnext" | "express"
+  | "nodedotjs" | "python" | "postgresql" | "supabase" | "drizzle" | "express"
   | "docker" | "redux" | "firebase" | "githubactions" | "vercel" | "linux" | "nginx" | "cloudflare"
   | "git" | "github" | "figma" | "postman" | "notion" | "api" | "x" | "linkedin" | "agile" | "whatsapp";
 
@@ -71,7 +71,7 @@ export const site = {
   hint: "Click the rig or press Enter to ship",
   resume: "/resume.pdf", // copied from ~/Desktop/Zafar_Resume.pdf; replace public/resume.pdf to update
   ticker: ["Next.js", "TypeScript", "React", "Node.js", "Python", "PostgreSQL"],
-  tags: ["Full Stack Engineering", "REST APIs", "Database Architecture", "SaaS", "ERPNext/Frappe", "CI/CD"],
+  tags: ["Full Stack Engineering", "REST APIs", "Database Architecture", "SaaS", "Python", "CI/CD"],
   quote: {
     text: "If I have the belief that I can do it, I shall surely acquire the capacity to do it even if I may not have it at the beginning.",
     author: "Mahatma Gandhi", // PLACEHOLDER: attribution added by me; the quote is widely credited to Gandhi
@@ -129,7 +129,6 @@ export const skills: SkillGroup[] = [
       { name: "Drizzle ORM", icon: "drizzle" },
       { name: "REST APIs", icon: "api" },
       { name: "Firebase", icon: "firebase" },
-      { name: "ERPNext / Frappe", icon: "frappe" },
     ],
   },
   {
@@ -158,19 +157,6 @@ export const skills: SkillGroup[] = [
 export const experience: Role[] = [
   {
     period: "2025 – 2026",
-    title: "Full Stack Engineer",
-    org: "UnityAlgo",
-    mark: "UA",
-    impact: "Won 3+ paying clients and grew to $251 in monthly recurring revenue.",
-    points: [
-      "Worked on the interest accrual engine for Care Financial Services Lending Management System to support loan interest calculations and lending workflows",
-      "The system served approximately 11,000 customers with over PKR 750 million in disbursed loans",
-      "Lead client acquisition, development, CI/CD deployment and post-launch support",
-    ],
-    stack: ["Python", "Next.js"],
-  },
-  {
-    period: "2025 – 2026",
     title: "Contract Full Stack Engineer",
     org: "MYDV-DMS · UK, remote",
     mark: "MV",
@@ -181,6 +167,19 @@ export const experience: Role[] = [
       "GitHub Actions CI/CD with Vercel deployment",
     ],
     stack: ["Next.js", "TypeScript", "Drizzle", "PostgreSQL", "Supabase", "Vercel"],
+  },
+  {
+    period: "2025 – 2026",
+    title: "Full Stack Engineer",
+    org: "UnityAlgo",
+    mark: "UA",
+    impact: "Won 3+ paying clients and grew to $251 in monthly recurring revenue.",
+    points: [
+      "Worked on the interest accrual engine for Care Financial Services Lending Management System to support loan interest calculations and lending workflows",
+      "The system served approximately 11,000 customers with over PKR 750 million in disbursed loans",
+      "Lead client acquisition, development, CI/CD deployment and post-launch support",
+    ],
+    stack: ["Python", "Next.js"],
   },
   {
     period: "2026",

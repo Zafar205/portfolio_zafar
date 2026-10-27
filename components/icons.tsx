@@ -1,5 +1,5 @@
 import {
-  siCloudflare, siCss, siDocker, siDrizzle, siErpnext, siExpress, siFigma, siFirebase, siRedux, siFrappe, siGit, siGithub, siGithubactions, siHtml5,
+  siCloudflare, siCss, siDocker, siDrizzle, siExpress, siFigma, siFirebase, siRedux, siGit, siGithub, siGithubactions, siHtml5,
   siJavascript, siLinux, siNextdotjs, siNginx, siNodedotjs, siNotion, siPostgresql, siPostman, siPython, siReact,
   siSupabase, siTailwindcss, siTypescript, siVercel, siWhatsapp, siX,
 } from "simple-icons";
@@ -8,8 +8,8 @@ import type { IconKey } from "@/data/site";
 const PATHS: Partial<Record<IconKey, string>> = {
   react: siReact.path, nextdotjs: siNextdotjs.path, typescript: siTypescript.path, javascript: siJavascript.path,
   tailwindcss: siTailwindcss.path, html5: siHtml5.path, css: siCss.path, nodedotjs: siNodedotjs.path, python: siPython.path,
-  postgresql: siPostgresql.path, supabase: siSupabase.path, drizzle: siDrizzle.path, frappe: siFrappe.path,
-  erpnext: siErpnext.path, express: siExpress.path, redux: siRedux.path, firebase: siFirebase.path, docker: siDocker.path, githubactions: siGithubactions.path,
+  postgresql: siPostgresql.path, supabase: siSupabase.path, drizzle: siDrizzle.path,
+  express: siExpress.path, redux: siRedux.path, firebase: siFirebase.path, docker: siDocker.path, githubactions: siGithubactions.path,
   vercel: siVercel.path, linux: siLinux.path, nginx: siNginx.path, cloudflare: siCloudflare.path, git: siGit.path,
   github: siGithub.path, figma: siFigma.path, postman: siPostman.path, notion: siNotion.path, x: siX.path, whatsapp: siWhatsapp.path,
   // simple-icons has no LinkedIn or generic API glyph; these are drawn by hand.
