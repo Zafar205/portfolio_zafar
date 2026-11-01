@@ -66,7 +66,7 @@ export const site = {
   available: "Available for freelance work",
   intro: [
     "Full-stack engineer in Karachi. I build SaaS products for dealerships, schools and lenders, and the pipelines that ship them.",
-    "Most recently I helped a UK Dealership Management System increase MRR from £200 to £2,400.",
+    "During my tenure as a full-stack engineer on a UK dealership management platform, its MRR grew from £200 to £2,400.",
   ],
   hint: "Click the rig or press Enter to ship",
   resume: "/resume.pdf", // copied from ~/Desktop/Zafar_Resume.pdf; replace public/resume.pdf to update
@@ -160,7 +160,7 @@ export const experience: Role[] = [
     title: "Contract Full Stack Engineer",
     org: "MYDV-DMS · UK, remote",
     mark: "MV",
-    impact: "Helped grow monthly recurring revenue from £200 to £2,400.",
+    impact: "During my engineering tenure, monthly recurring revenue grew from £200 to £2,400.",
     points: [
       "Built vehicle listings, support tickets, part exchange, SoR agreements, blogs and customer pages",
       "Automated vehicle publishing to Facebook, Instagram, YouTube and TikTok",
@@ -177,7 +177,7 @@ export const experience: Role[] = [
     points: [
       "Supported loan interest calculations and lending workflows",
       "The system served approximately 11,000 customers with over PKR 750 million in disbursed loans",
-      "Lead client acquisition, development, CI/CD deployment and post-launch support",
+      "Led development, CI/CD deployment and post-launch support",
     ],
     stack: ["Python", "Next.js"],
   },
@@ -244,7 +244,7 @@ export const projects: Project[] = [
       "Vehicle listings, support tickets, part exchange and SoR agreements",
       "Blog and customer-facing pages for each dealership",
       "GitHub Actions CI/CD with Vercel deployment",
-      "Helped grow monthly recurring revenue from £200 to £2,400",
+      "During my engineering tenure, monthly recurring revenue grew from £200 to £2,400",
     ],
   },
   {
