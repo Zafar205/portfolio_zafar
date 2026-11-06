@@ -44,7 +44,9 @@ export interface Project {
   role: string;
   stack: string[];
   highlights: string[];
+  details?: string[];
   url?: string;
+  image?: string;
 }
 
 export const site = {
@@ -89,17 +91,17 @@ export const site = {
 /** Bottom dock. Icons live in components/Dock.tsx. */
 export const nav = [
   { href: "#top", label: "Home", icon: "home" },
+  { href: "#work", label: "Projects", icon: "grid" },
   { href: "#skills", label: "Skills", icon: "code" },
   { href: "#experience", label: "Experience", icon: "briefcase" },
-  { href: "#work", label: "Projects", icon: "grid" },
   { href: "#contact", label: "Contact", icon: "mail" },
 ] as const;
 
 /** Section headings: number, English label and native-script subtitle. */
 export const sections = {
-  skills: { no: "01", label: "Stack", title: "Skills", urdu: "مہارت" },
-  experience: { no: "01", label: "Timeline", title: "Experience", urdu: "تجربہ" },
-  work: { no: "02", label: "All work", title: "Projects", urdu: "منصوبے" },
+  work: { no: "01", label: "All work", title: "Projects", urdu: "منصوبے" },
+  skills: { no: "02", label: "Stack", title: "Skills", urdu: "مہارت" },
+  experience: { no: "03", label: "Timeline", title: "Experience", urdu: "تجربہ" },
   contact: { no: "00", label: "Send a message", title: "Contact", urdu: "رابطہ" },
 };
 
@@ -226,7 +228,7 @@ export const experience: Role[] = [
   },
 ];
 
-// PLACEHOLDER: summaries, stacks and highlights are drafted from your experience notes; edit freely.
+// Project copy is based on the linked live sites and the existing experience notes.
 export const projects: Project[] = [
   {
     slug: "mydealershipview",
@@ -236,15 +238,22 @@ export const projects: Project[] = [
     category: "Dealership Management System",
     tagline: ["Listings", "Part exchange", "SoR"],
     footnote: "UK dealers · Next.js",
-    summary: "Stock, enquiries, part exchange and SoR agreements for UK car dealers in one platform.",
+    summary: "A dealership management platform for independent UK used-car dealers, bringing stock, sales, customer leads, invoices and workshop work into one system.",
     year: "2025",
     role: "Contract full-stack engineer",
     stack: ["Next.js", "TypeScript", "Drizzle", "PostgreSQL", "Supabase", "Vercel"],
     highlights: [
-      "Vehicle listings, support tickets, part exchange and SoR agreements",
-      "Blog and customer-facing pages for each dealership",
-      "GitHub Actions CI/CD with Vercel deployment",
+      "Vehicle stock management with DVLA/CAP data and AutoTrader integration",
+      "Sales pipeline, invoices and VAT margin scheme calculations",
+      "Customer lead tracking, test-drive records and workshop job cards",
+      "Dealer websites connected to live stock, plus part exchange and SoR workflows",
       "During my engineering tenure, monthly recurring revenue grew from £200 to £2,400",
+    ],
+    url: "https://mydealershipview.com/",
+    image: "/mydv.png",
+    details: [
+      "The public product covers a vehicle from acquisition through preparation, advertising, sale and aftercare. Dealers can manage stock, capture leads, record test drives, create invoices and coordinate workshop tasks from one dashboard.",
+      "The platform also offers dealer website templates tied to live inventory, plus public vehicle listings. My work included listings, support tickets, part exchange, SoR agreements, blogs and customer-facing pages, alongside GitHub Actions deployment to Vercel.",
     ],
   },
   {
@@ -255,11 +264,25 @@ export const projects: Project[] = [
     category: "Text-to-Speech Project",
     tagline: ["Urdu", "Speech", "Orpheus"],
     footnote: "Urdu text-to-speech",
-    summary: "An Urdu text-to-speech project using Orpheus.",
+    summary: "Urdu language adaptation for Orpheus speech generation, with a longer-term goal of controllable emotional delivery.",
     year: "2026",
-    role: "Engineer",
-    stack: ["Orpheus", "Urdu TTS"],
-    highlights: ["Urdu text-to-speech with Orpheus"],
+    role: "Research writeup by Muhammad Hassan",
+    stack: ["Orpheus", "SNAC", "LoRA", "Urdu TTS"],
+    highlights: [
+      "Encoded 24 kHz speech with the SNAC codec into seven interleaved tokens per frame",
+      "Retained 16,111 training clips (26.09 hours) after audit and context filtering",
+      "Trained a LoRA adapter for 2,014 optimizer steps on a Tesla T4 in about 5.04 hours",
+      "Best periodic validation loss was 5.5768 at step 1,600; full final validation loss was 5.5684",
+      "Small two-prompt speech diagnostics worsened at the final checkpoint; emotion control remains future work",
+    ],
+    image: "/orpheus.png",
+    details: [
+      "The project starts with Urdu pronunciation and intelligibility. Its eventual aim is an agent whose voice can express states such as reassurance or concern, but the completed run establishes only the language-adaptation stage. No trained emotion-conditioned Urdu voice is demonstrated yet.",
+      "The pipeline uses the roughly 3B-parameter Orpheus backbone and the SNAC codec at 24 kHz. Three hierarchical codebooks are serialized into seven position-aware audio tokens per frame. Text and audio share a causal next-token training objective.",
+      "Transcripts are normalized and audio is checked before tokenization. A 2,048-token context limit led to whole text-audio pairs being excluded when too long. The retained ASLP UrduSpeech training set was 16,111 clips, or 26.09 hours, rather than the larger figure implied by the run name.",
+      "The completed configuration used a four-bit backbone with rank-32 LoRA, eight accumulation steps and one epoch on a Tesla T4. Validation loss improved, but speech quality needs separate listening and recognition checks. A two-Urdu-prompt diagnostic improved at an earlier checkpoint and then deteriorated at the final one, including a sustained hum in one sample.",
+      "A later UrduTTS data-preparation run processed more clips but stopped before training because there was insufficient space for a checkpoint. The next steps are broader Urdu prompt testing, multiple generation seeds, human listening assessment and a separately trained emotion-conditioning stage.",
+    ],
   },
   {
     slug: "rlcc-marks",
@@ -269,7 +292,7 @@ export const projects: Project[] = [
     category: "Education Management System",
     tagline: ["Marks", "Attendance", "Results"],
     footnote: "~750 students · Supabase",
-    summary: "Marks, attendance and results for about 750 students, built as a volunteer in one month.",
+    summary: "A volunteer-built school system for recording attendance, midterm and final marks, and student results for roughly 750 learners.",
     year: "2026",
     role: "Full stack engineer (volunteer)",
     stack: ["Next.js", "Supabase", "PostgreSQL"],
@@ -278,6 +301,12 @@ export const projects: Project[] = [
       "Delivered in one month (April to May 2026)",
       "Midterm and final marks entry with result generation",
       "Used by staff for about 750 female students",
+    ],
+    url: "https://khidmat-mms.vercel.app/",
+    image: "/rlcc.png",
+    details: [
+      "The school uses this application for student records, daily attendance and exam marks. Staff can move from mark entry to result management in one workflow.",
+      "The public URL currently opens an authentication screen, so the private staff workflows are described from the project notes rather than from a public demo.",
     ],
   },
   {
@@ -288,14 +317,22 @@ export const projects: Project[] = [
     category: "Dealership Marketing & Automation",
     tagline: ["Facebook", "Instagram", "TikTok"],
     footnote: "Auto-publishing · UK",
-    summary: "Publishes each new vehicle to Facebook, Instagram, YouTube and TikTok automatically.",
+    summary: "A dealership marketing service that turns live vehicle inventory into scheduled social posts and manages listings across connected channels.",
     year: "2025",
     role: "Full-stack engineer",
     stack: ["Next.js", "TypeScript", "Social APIs"],
     highlights: [
-      "One listing, four social channels",
-      "Scheduled publishing pipeline",
-      "Built on the MYDEALERSHIPVIEW data model",
+      "Stock-driven post rules for newest, oldest, cheapest or flagship vehicles",
+      "Daily, weekly, monthly or custom publishing cadence",
+      "Connected social channels and listing status managed in one place",
+      "Public site lists Facebook, Instagram, X, YouTube Shorts and Snapchat Spotlight; TikTok is marked coming soon",
+      "Paid advertising services are presented as future add-ons",
+    ],
+    url: "https://marketing.mydealershipview.com/",
+    image: "/marketing.png",
+    details: [
+      "Dealers connect inventory and social accounts, then choose rules for which vehicles to promote and how often. Posts use current stock data so promotions track what is actually on the forecourt.",
+      "The public service page distinguishes existing social and listings management from planned additions. TikTok and managed Google Vehicle, Meta and OpenAI advertising are labeled as coming soon.",
     ],
   },
   {
@@ -313,6 +350,31 @@ export const projects: Project[] = [
     highlights: ["Worked on the interest accrual engine", "Supported loan interest calculations and lending workflows", "Served approximately 11,000 customers with over PKR 750 million in disbursed loans"],
   },
   {
+    slug: "bluebell-motorhouse",
+    short: "Bluebell Motorhouse",
+    mark: "BM",
+    title: "Bluebell Motorhouse",
+    category: "Dealership Website",
+    tagline: ["Used cars", "Finance", "Enquiries"],
+    footnote: "Bradford · West Yorkshire",
+    summary: "A used-car dealership website for Bluebell Motorhouse in Bradford, with a browsable showroom, vehicle finance figures and customer contact paths.",
+    year: "2025",
+    role: "Full-stack engineer",
+    stack: ["Dealership website", "Vehicle listings"],
+    highlights: [
+      "Used-car inventory with price, mileage, fuel type and monthly finance figures",
+      "Vehicle advert pages and showroom browsing",
+      "Sell-your-car and customer review pages",
+      "Finance information and dealership contact details",
+    ],
+    url: "https://www.bluebellmotorhouse.co.uk/",
+    image: "/bluebell.png",
+    details: [
+      "The public site presents Bluebell Motorhouse as a family-owned dealership in Bradford, West Yorkshire. Shoppers can browse stock, inspect vehicle adverts and see indicative monthly payments.",
+      "The site also gives buyers routes to finance information, reviews, selling a car and contacting the dealership.",
+    ],
+  },
+  {
     slug: "autoprestige-cars",
     short: "Autoprestige Cars",
     mark: "AP",
@@ -320,11 +382,22 @@ export const projects: Project[] = [
     category: "Dealership Website",
     tagline: ["Stock", "Finance", "Enquiries"],
     footnote: "Dealership website",
-    summary: "Stock-led dealership website fed by the dealer's live inventory.",
+    summary: "A used-car showroom for Autoprestige Cars in Bradford, with routes to stock, finance, vehicle valuation and customer enquiries.",
     year: "2025",
     role: "Full-stack engineer",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    highlights: ["Live stock feed", "Vehicle detail pages", "Enquiry capture"],
+    highlights: [
+      "Used-car showroom and sold-car browsing",
+      "Finance, valuation and registration-plate sections",
+      "Vehicle enquiries and dealership contact information",
+      "Website identifies MYDEALERSHIPVIEW as its platform",
+    ],
+    url: "https://autoprestigecars.co.uk/usedcars",
+    image: "/autotprestige.png",
+    details: [
+      "The used-cars page is the live stock entry point for Autoprestige Cars. Its navigation also exposes sold vehicles, services, registration plates, valuation, finance, reviews and contact.",
+      "The public page loads its stock client-side, so current individual vehicles are not included in this portfolio description.",
+    ],
   },
   {
     slug: "motor-time-group",
@@ -334,11 +407,22 @@ export const projects: Project[] = [
     category: "Dealership Website",
     tagline: ["Stock", "Finance", "Part exchange"],
     footnote: "Dealership website",
-    summary: "Multi-page dealership site with finance and part-exchange enquiries.",
+    summary: "A dealership website for a family-run business in Long Eaton, combining featured stock with finance, part exchange and warranty enquiries.",
     year: "2025",
     role: "Full-stack engineer",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    highlights: ["Live stock feed", "Finance enquiries", "Part-exchange form"],
+    highlights: [
+      "Featured vehicle stock and a route to the full showroom",
+      "Finance enquiries through regulated partners",
+      "Part-exchange valuation enquiries",
+      "Warrantywise information and customer reviews",
+    ],
+    url: "https://motortimegroup.co.uk/",
+    image: "/motortime.png",
+    details: [
+      "Motor Time Group presents hand-picked, inspected used vehicles with a straightforward buying experience. Visitors can browse featured stock and then move to the full inventory.",
+      "The site also explains finance through partner firms, part exchange, warranty coverage and ways to visit or contact the dealership.",
+    ],
   },
   {
     slug: "ideal-car",
@@ -348,11 +432,22 @@ export const projects: Project[] = [
     category: "Dealership Website",
     tagline: ["Stock", "Search", "Leads"],
     footnote: "Dealership website",
-    summary: "Fast, mobile-first dealership website with searchable stock.",
+    summary: "A Nottinghamshire dealership website with used-car search, featured vehicles, a finance calculator and warranty information.",
     year: "2025",
     role: "Full-stack engineer",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    highlights: ["Searchable stock", "Mobile-first layout", "Lead capture"],
+    highlights: [
+      "Vehicle search by make and model",
+      "Featured used-car listings and showroom information",
+      "Finance calculator and finance options",
+      "Warranty details, reviews and car enhancements",
+    ],
+    url: "https://idealcarltd.co.uk/",
+    image: "/idealcar.png",
+    details: [
+      "Ideal Car provides a searchable entry point to its used inventory, alongside featured cars and information about its indoor showroom.",
+      "The site also supports finance exploration with a calculator, and presents warranty, customer review and vehicle enhancement sections.",
+    ],
   },
   {
     slug: "mwa-autos",
@@ -362,11 +457,22 @@ export const projects: Project[] = [
     category: "Dealership Website",
     tagline: ["Stock", "Enquiries", "SEO"],
     footnote: "Dealership website",
-    summary: "Dealership website with stock pages and enquiry routing.",
+    summary: "A Nottingham used-car dealership website with stock filters, budget-led browsing, finance information and aftercare content.",
     year: "2025",
     role: "Full-stack engineer",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    highlights: ["Stock pages", "Enquiry routing", "SEO-ready vehicle pages"],
+    highlights: [
+      "Vehicle search by make and model with additional filters",
+      "Budget slider for browsing vehicles by monthly payment",
+      "Finance, part-exchange and warranty information",
+      "Customer experience, promotions and contact routes",
+    ],
+    url: "https://mwaautosltd.co.uk/",
+    image: "/mwa.png",
+    details: [
+      "MWA Autos uses a stock search and monthly-budget control to help shoppers narrow down vehicles. The site also introduces finance and part-exchange options.",
+      "Supporting pages cover warranties, promotions, reviews, aftercare and dealership contact details.",
+    ],
   },
 ];
 

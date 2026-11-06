@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
@@ -51,6 +52,11 @@ async function ProjectDetail({ params }: { params: PageProps<"/projects/[slug]">
       <div className="frame mt-10">
         <div className="box">
           <div className="preview h-full p-5 sm:p-8">
+          {project.image ? (
+            <div className="relative mb-5 aspect-[16/9] overflow-hidden border border-[#c9c9c5] bg-white">
+              <Image src={project.image} alt={`${project.title} website preview`} fill sizes="(max-width: 768px) 100vw, 80vw" className="object-cover object-top" priority />
+            </div>
+          ) : null}
           <div className="border border-[#c9c9c5] px-6 py-10 sm:px-12 sm:py-14">
             <p className="text-[12px] tracking-[.22em] uppercase opacity-75">{project.category}</p>
             <hr className="mt-5 border-[#c9c9c5]" />
@@ -85,9 +91,9 @@ async function ProjectDetail({ params }: { params: PageProps<"/projects/[slug]">
           </div>
           {project.url ? (
             <div>
-              <dt className="label">Live</dt>
+              <dt className="label">Project link</dt>
               <dd className="mt-1">
-                <a href={project.url} className="link-line" target="_blank" rel="noopener noreferrer">Visit website ↗</a>
+                <a href={project.url} className="link-line" target="_blank" rel="noopener noreferrer">Visit live project ↗</a>
               </dd>
             </div>
           ) : null}
@@ -96,7 +102,10 @@ async function ProjectDetail({ params }: { params: PageProps<"/projects/[slug]">
         <section aria-labelledby="overview">
           <h2 id="overview" className="label"><b>{pad(index + 1)}</b> / Overview</h2>
           <p className="mt-4 max-w-[44rem] text-[17px] leading-relaxed">{project.summary}</p>
-          <h3 className="label mt-10">What I built</h3>
+          {project.details?.map((paragraph) => (
+            <p key={paragraph} className="mt-5 max-w-[44rem] text-[16px] leading-relaxed text-muted">{paragraph}</p>
+          ))}
+          <h3 className="label mt-10">Project highlights</h3>
           <ol className="mt-4 border-t border-line">
             {project.highlights.map((item, i) => (
               <li key={item} className="flex gap-6 border-b border-line py-5 text-[16px]">

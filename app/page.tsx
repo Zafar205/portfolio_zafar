@@ -29,9 +29,9 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd).replace(/</g, "\\u003c") }} />
       <main id="main">
         <Hero />
+        <Projects />
         <Skills />
         <Experience />
-        <Projects />
         <Contact />
       </main>
       <Footer />

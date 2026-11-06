@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Project } from "@/data/site";
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -10,6 +11,11 @@ export default function ProjectCard({ project, index, headingLevel = 3 }: { proj
     <article className="frame frame-hover h-full" data-reveal style={{ "--i": index % 2 } as React.CSSProperties}>
       <div className="box flex flex-col">
         <div className="preview p-4 sm:p-5" aria-hidden="true">
+          {project.image ? (
+            <div className="relative mb-4 aspect-[16/9] overflow-hidden border border-[#c9c9c5] bg-white">
+              <Image src={project.image} alt="" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top" />
+            </div>
+          ) : null}
           <div className="flex items-center gap-6 border border-[#c9c9c5] px-6 py-7 sm:px-8">
             <div className="min-w-0 flex-1">
               <p className="text-[11px] tracking-[.22em] uppercase opacity-75">{project.category}</p>
@@ -47,7 +53,7 @@ export default function ProjectCard({ project, index, headingLevel = 3 }: { proj
             </Link>
             {project.url ? (
               <a href={project.url} className="btn btn-line min-h-11 px-5 text-[12px]" target="_blank" rel="noopener noreferrer">
-                Visit website <span aria-hidden="true">↗</span>
+                Visit project <span aria-hidden="true">↗</span>
               </a>
             ) : null}
           </div>
