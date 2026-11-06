@@ -348,6 +348,7 @@ export const projects: Project[] = [
     role: "Engineer",
     stack: ["Python"],
     highlights: ["Worked on the interest accrual engine", "Supported loan interest calculations and lending workflows", "Served approximately 11,000 customers with over PKR 750 million in disbursed loans"],
+    image: "/lending.png",
   },
   {
     slug: "bluebell-motorhouse",
