@@ -54,26 +54,26 @@ export const site = {
   name: "Muhammad Zafar",
   firstName: "Muhammad",
   /** Phrases the hero types out in turn. */
-  typed: ["Muhammad Zafar,", "Software Engineer", "Full Stack Engineer"],
+  typed: ["Muhammad Zafar,", "AI Product Engineer"],
   /** PLACEHOLDER: replace with your photo at public/operator.jpg and point this to it. */
   photo: "/head_shot.png",
-  role: "Software Engineer",
-  headlineRole: "Software Engineer",
-  roleLong: "Full Stack Engineer",
-  focus: "Next.js, TypeScript & SaaS",
+  role: "AI Product Engineer",
+  headlineRole: "AI Product Engineer",
+  roleLong: "AI Product Engineer",
+  focus: "AI products, Next.js & SaaS",
   description:
-    "Full-stack engineer building polished web products with Next.js, TypeScript, APIs, and database architecture.",
+    "AI product engineer building practical software with Next.js, TypeScript, APIs, and database architecture.",
   city: "Karachi", // PLACEHOLDER: assumed from Habib University
   country: "Pakistan",
   available: "Available for freelance work",
   intro: [
-    "Full-stack engineer in Karachi. I build SaaS products for dealerships, schools and lenders, and the pipelines that ship them.",
+    "AI product engineer in Karachi. I build software for dealerships, schools and lenders, and the pipelines that ship it.",
     "During my tenure as a full-stack engineer on a UK dealership management platform, its MRR grew from £200 to £2,400.",
   ],
   hint: "Click the rig or press Enter to ship",
   resume: "/resume.pdf", // copied from ~/Desktop/Zafar_Resume.pdf; replace public/resume.pdf to update
   ticker: ["Next.js", "TypeScript", "React", "Node.js", "Python", "PostgreSQL"],
-  tags: ["Full Stack Engineering", "REST APIs", "Database Architecture", "SaaS", "Python", "CI/CD"],
+  tags: ["AI Product Engineering", "REST APIs", "Database Architecture", "SaaS", "Python", "CI/CD"],
   quote: {
     text: "If I have the belief that I can do it, I shall surely acquire the capacity to do it even if I may not have it at the beginning.",
     author: "Mahatma Gandhi", // PLACEHOLDER: attribution added by me; the quote is widely credited to Gandhi
