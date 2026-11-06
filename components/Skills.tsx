@@ -19,7 +19,7 @@ export default function Skills() {
                 <b>{s.no}</b> / {s.label}
               </p>
               <h3 className="mt-2 text-[clamp(26px,3vw,36px)] font-bold tracking-[.08em] uppercase">{group.label}</h3>
-              <ol className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              <ol className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {group.items.map((item, i) => (
                   <li key={item.name} className="frame frame-hover">
                     <div className="box flex items-center gap-4 px-5 py-5">
@@ -28,7 +28,7 @@ export default function Skills() {
                       </span>
                       <span className="min-w-0">
                         <span className="label tnum block text-[10px]">{pad(i + 1)}</span>
-                        <span className="mt-1 block text-[15px] tracking-[.1em] break-words uppercase" translate="no">
+                        <span className="mt-1 block text-[15px] tracking-[.1em] uppercase" translate="no">
                           {item.name}
                         </span>
                       </span>
