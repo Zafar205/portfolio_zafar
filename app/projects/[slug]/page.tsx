@@ -49,25 +49,17 @@ async function ProjectDetail({ params }: { params: PageProps<"/projects/[slug]">
         <span aria-current="page" className="text-text">{project.title}</span>
       </nav>
 
-      <div className="frame mt-10">
+      {project.image ? <div className="frame mt-10">
         <div className="box">
           <div className="preview h-full p-5 sm:p-8">
-          {project.image ? (
-            <div className="relative mb-5 aspect-[16/9] overflow-hidden border border-[#c9c9c5] bg-white">
+            <div className="relative aspect-[16/9] overflow-hidden border border-[#c9c9c5] bg-white">
               <Image src={project.image} alt={`${project.title} website preview`} fill sizes="(max-width: 768px) 100vw, 80vw" className="object-cover object-top" priority />
             </div>
-          ) : null}
-          <div className="border border-[#c9c9c5] px-6 py-10 sm:px-12 sm:py-14">
-            <p className="text-[12px] tracking-[.22em] uppercase opacity-75">{project.category}</p>
-            <hr className="mt-5 border-[#c9c9c5]" />
-            <h1 className="preview-title mt-7 text-[clamp(36px,6vw,88px)] text-balance" translate="no">{project.title}</h1>
-            <p className="mt-4 text-[12px] tracking-[.16em] uppercase opacity-80">{project.tagline.join(" · ")}</p>
-            <hr className="mt-7 border-[#c9c9c5]" />
-            <p className="mt-4 text-[14px] opacity-80">{project.footnote}</p>
-          </div>
           </div>
         </div>
-      </div>
+      </div> : null}
+
+      <h1 className="mt-10 text-[clamp(30px,5vw,64px)] font-bold tracking-[.06em] uppercase" translate="no">{project.title}</h1>
 
       <div className="grid gap-12 py-14 md:grid-cols-[18rem_minmax(0,1fr)]">
         <dl className="space-y-6">

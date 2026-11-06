@@ -10,28 +10,13 @@ export default function ProjectCard({ project, index, headingLevel = 3 }: { proj
   return (
     <article className="frame frame-hover h-full" data-reveal style={{ "--i": index % 2 } as React.CSSProperties}>
       <div className="box flex flex-col">
-        <div className="preview p-4 sm:p-5" aria-hidden="true">
-          {project.image ? (
-            <div className="relative mb-4 aspect-[16/9] overflow-hidden border border-[#c9c9c5] bg-white">
+        {project.image ? (
+          <div className="preview p-4 sm:p-5" aria-hidden="true">
+            <div className="relative aspect-[16/9] overflow-hidden border border-[#c9c9c5] bg-white">
               <Image src={project.image} alt="" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top" />
             </div>
-          ) : null}
-          <div className="flex items-center gap-6 border border-[#c9c9c5] px-6 py-7 sm:px-8">
-            <div className="min-w-0 flex-1">
-              <p className="text-[11px] tracking-[.22em] uppercase opacity-75">{project.category}</p>
-              <hr className="mt-4 border-[#c9c9c5]" />
-              <p className="preview-title mt-5 text-[clamp(26px,2.6vw,40px)] text-balance" translate="no">
-                {project.short}
-              </p>
-              <p className="mt-3 text-[11px] tracking-[.16em] uppercase opacity-80">{project.tagline.join(" · ")}</p>
-              <hr className="mt-5 border-[#c9c9c5]" />
-              <p className="mt-3 text-[12px] opacity-80">{project.footnote}</p>
-            </div>
-            <div className="hidden size-24 shrink-0 place-items-center rounded-[20px] bg-white shadow-[0_6px_0_#cfcfcb] 2xl:size-28 xl:grid">
-              <span className="preview-title text-[38px] 2xl:text-[44px]">{project.mark}</span>
-            </div>
           </div>
-        </div>
+        ) : null}
         <div className="flex flex-1 flex-col px-5 pt-6 pb-6 sm:px-6">
           <p className="label tnum">
             <b>{pad(index + 1)}</b> / Project
